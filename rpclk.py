@@ -24,5 +24,5 @@ if __name__ == '__main__':
     centroids, labels, iters= A.run()
 
     # Run k-means clustering with RPCL and k=4
-    plot4RPCLK(args.k, iters, X, labels, centroids)
+    plot4RPCLK(args.k, iters, X, labels, centroids, args.beta)
 

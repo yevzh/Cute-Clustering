@@ -7,9 +7,11 @@ import argparse
 from utils import *
 
 class GMM:
-    def __init__(self, data, n_components, method):
+    def __init__(self, data, n_components, method, n_clusters, n_samples):
         self.model = GaussianMixture(n_components=n_components)
         self.n_components = n_components
+        self.n_samples = n_samples
+        self.n_clusters = n_clusters
         self.data = data
         self.model.fit(self.data)
         self.method = method
@@ -46,9 +48,16 @@ class GMM:
             gmm.fit(self.data)
             plt.figure()
             labels = gmm.predict(self.data)
+            n_labels = (len(set(labels)))
+            method = self.method
+            n_samples = self.n_samples
+            n_clusters = self.n_clusters
+            plt.title(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.scatter(self.data[:, 0], self.data[:, 1], c=labels, s=15)
+            plt.savefig(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters.png'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.show()
-            print(self.aic)
+            plt.close()
+            # print(self.aic)
 
         if self.method == 'bic':
             self.bic_evaluate()
@@ -57,13 +66,27 @@ class GMM:
             gmm.fit(self.data)
             plt.figure()
             labels = gmm.predict(self.data)
+            n_labels = (len(set(labels)))
+            method = self.method
+            n_samples = self.n_samples
+            n_clusters = self.n_clusters
+            plt.title(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.scatter(self.data[:, 0], self.data[:, 1], c=labels, s=15)
+            plt.savefig(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters.png'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.show()
-            print(self.bic)
+            plt.close()
+            # print(self.bic)
 
         if self.method == 'vbem':
             plt.figure()
             labels = self.vbem_model.predict(self.data)
+            n_labels = (len(set(labels)))
+            method = self.method
+            n_samples = self.n_samples
+            n_clusters = self.n_clusters
+            plt.title(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.scatter(self.data[:, 0], self.data[:, 1], c=labels, s=15)
+            plt.savefig(f'{method} sample{n_samples} with {n_clusters}centroids, to {n_labels} clusters.png'.format(method=method,n_samples=n_samples,n_clusters=n_clusters,n_labels=n_labels ))
             plt.show()
+            plt.close()
 

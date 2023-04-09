@@ -21,3 +21,20 @@ The code repository consists mainly of two tasks:
   ```
 
 The implementation mainly focuses on how to automatically get the best k.
+
+## UPDATED!!!
+
+To do the experiments, you can directly use the bash command:
+
+```bash
+bash experiment_rpclk.sh
+```
+
+```bash
+bash experiment_gmm.sh
+```
+
+
+
+
+
